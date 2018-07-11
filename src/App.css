@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  position: relative;
+  border: solid
 }
 
 .App > ol > li {
@@ -32,10 +34,38 @@
   to { transform: rotate(360deg); }
 }
 
+.states {
+  border: solid
+
+}
+
 .cid {
-  position: absolute;
-  margin: -390px 0px 0 200px;
+  position: fixed;
+  margin-top:-300px;
+  margin-left: 200px;
   border: solid;
   display: inline-block;
+  text-align: justify;
   padding: 20px;
+}
+.status {
+  position:relative;
+  border: solid;
+  margin: 5px
+}
+
+.lang {
+  position: fixed;
+  margin-top: -150px;
+  margin-left: 200px;
+  border: solid;
+  display: inline-block;
+  text-align: justify;
+  padding: 20px;
+}
+
+.statesSelected {
+  margin: 10px;
+  position:relative;
+  border: solid
 }

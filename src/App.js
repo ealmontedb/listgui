@@ -71,6 +71,18 @@ componentDidMount() {
                       }
                       return v
 
+                  }),
+               lang: prevState.lang.map(v=>{
+                      console.log(v.phone,values[1].lang)
+                      if(v.default===values[1].lang){
+                         console.log(" si cid",v.default,values[1].lang)
+                        return ({
+                                  default: v.default,        
+                                  checked:true
+                                })
+                      }
+                      return v
+
                   })
 
          }))
@@ -158,17 +170,21 @@ updateFilter=(e)=>{
 
 submitHandler=(e)=>{
 
-  fetch('http://localhost:4000/submit',{
-    mode: 'cors',
-    method: 'post',
-    headers: {      
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(this.state.states)
-})
-      .then(response => response.json())
-      .then(status =>this.setState({status}));
+    if(this.state.states.length===0){
+      alert("Favor elija al menos un estado ")
+    }else{
 
+        fetch('http://localhost:4000/submit',{
+          mode: 'cors',
+          method: 'post',
+          headers: {      
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(this.state.states)
+      })
+            .then(response => response.json())
+            .then(status =>this.setState({status}));
+    }
 }
 
 updateCid=(e)=>{
@@ -256,13 +272,13 @@ updateLang=(e)=>{
       <div className="App">
           {/*console.log("esto",this.getValues().then(r=>console.log(r)))*/}
           <h1>FRIMEMSP</h1>
+          <div className="states">
            <ul><li><b>State</b>->Total</li></ul>
            <ol>                   
            {this.state.data.map(             
-             d=> <li key={d.state}>
-                    <b>{d.state}</b> -> {d.count} 
-           <input type="checkbox" name="states" value={d.state} onChange={this.updateFilter} defaultChecked={d.checked}></input>
-                    
+             d=> <li key={d.state}>                    
+                   <input type="checkbox" name="states" value={d.state} onChange={this.updateFilter} defaultChecked={d.checked}></input>
+                   <b>{d.state}</b> -> {d.count}  
                  </li>
 
            )
@@ -270,6 +286,7 @@ updateLang=(e)=>{
                  
           <button onClick={this.submitHandler}>submit</button>  
           </ol>
+          </div>
           <div className="cid">
            {this.state.cid.map(             
              d=> <li key={d.phone}>
@@ -302,6 +319,7 @@ updateLang=(e)=>{
            )
           }
          </div>
+         <div className="statesSelected">
           <ul>
            {this.state.states.map( 
              
@@ -312,7 +330,7 @@ updateLang=(e)=>{
               
            )}
           </ul>
-          
+          </div>
       </div>
     );
   }

@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   position: relative;
-  border: solid
 }
 
 .App > ol > li {
@@ -35,14 +34,15 @@
 }
 
 .states {
-  border: solid
-
+  position: relative;
+  padding-left: 46%;
+  text-align: justify;
 }
 
 .cid {
-  position: fixed;
-  margin-top:-300px;
-  margin-left: 200px;
+  position: absolute;
+  top:10%;
+  left: 60%;
   border: solid;
   display: inline-block;
   text-align: justify;
@@ -50,14 +50,13 @@
 }
 .status {
   position:relative;
-  border: solid;
   margin: 5px
 }
 
 .lang {
-  position: fixed;
-  margin-top: -150px;
-  margin-left: 200px;
+  position: absolute;
+  top: 37%;
+  left: 60%;
   border: solid;
   display: inline-block;
   text-align: justify;
@@ -65,7 +64,7 @@
 }
 
 .statesSelected {
-  margin: 10px;
+  top: 10px;
   position:relative;
-  border: solid
+ 
 }

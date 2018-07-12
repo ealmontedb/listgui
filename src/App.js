@@ -286,17 +286,30 @@ updateLang=(e)=>{
                  
           <button onClick={this.submitHandler}>submit</button>  
           </ol>
-          </div>
-          <div className="cid">
-           {this.state.cid.map(             
-             d=> <li key={d.phone}>
-                     <input type="radio" name="cid" value={d.phone} onChange={this.updateCid} checked={d.checked}></input>
-                     <b>{d.st}</b> - {d.phone}                    
-                 </li>
 
-           )
-          }
-         </div>
+          <div className="cid">
+            {this.state.cid.map(             
+              d=> <li key={d.phone}>
+                      <input type="radio" name="cid" value={d.phone} onChange={this.updateCid} checked={d.checked}></input>
+                      <b>{d.st}</b> - {d.phone}                    
+                  </li>
+
+            )
+            }
+          </div>
+          <div className="lang">
+              {this.state.lang.map(             
+                d=> <li key={d.default}>
+              <input type="radio" name="lang" value={d.default} onChange={this.updateLang} checked={d.checked}></input>
+                        <b>{d.default}</b>                    
+                    </li>
+
+              )
+              }
+          </div>
+
+      </div>
+          
          <div className="status">
            
           {this.state.status.map( (s,id)=><li key={id}>
@@ -308,17 +321,7 @@ updateLang=(e)=>{
           </li>
               
            )}
-         </div>
-          <div className="lang">
-           {this.state.lang.map(             
-             d=> <li key={d.default}>
-           <input type="radio" name="lang" value={d.default} onChange={this.updateLang} checked={d.checked}></input>
-                     <b>{d.default}</b>                    
-                 </li>
-
-           )
-          }
-         </div>
+         </div>          
          <div className="statesSelected">
           <ul>
            {this.state.states.map( 
